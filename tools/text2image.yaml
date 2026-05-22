@@ -1,0 +1,56 @@
+# 工具描述
+description:
+  human:
+    en_US: Generate high-quality images from text prompts using ModelScope Qwen-Image AI model. Support various image styles and detailed descriptions.
+    zh_Hans: 使用 ModelScope Qwen-Image AI 模型从文本提示生成高质量图像。支持各种图像风格和详细描述。
+  llm: This tool generates high-quality images from text descriptions using ModelScope Qwen-Image model. It supports detailed prompts and can create various styles of images.
+
+# 扩展配置
+extra:
+  python:
+    source: tools/text2image.py
+
+# 身份信息
+identity:
+  author: qwen_developer
+  icon: icon.svg
+  label:
+    en_US: Text to Image
+    zh_Hans: 文生图
+  name: text2image
+
+# 参数配置
+parameters:
+- form: llm
+  human_description:
+    en_US: The text prompt to generate image from. Describe what you want to see in the image in detail. For example "A golden cat sitting on a red sofa in a cozy living room".
+    zh_Hans: 用于生成图像的文本提示。详细描述您希望在图像中看到的内容。例如"一只金色的猫坐在舒适客厅的红色沙发上"。
+  label:
+    en_US: Prompt
+    zh_Hans: 提示词
+  llm_description: Text prompt that describes the desired image content in detail. The more specific and descriptive, the better the generated image quality.
+  name: prompt
+  required: true
+  type: string
+  
+- form: form
+  human_description:
+    en_US: The AI model to use for image generation. Leave empty to use the default model configured in provider credentials, or Qwen/Qwen-Image-2512 if not set.
+    zh_Hans: 用于图像生成的 AI 模型。留空则使用凭据中配置的默认模型，若未配置则使用 Qwen/Qwen-Image-2512。
+  label:
+    en_US: Model
+    zh_Hans: 模型
+  name: model
+  required: false
+  type: string
+
+- form: form
+  human_description:
+    en_US: size of the output image. Default is 1024x1024.
+    zh_Hans: 图像的目标尺寸，默认为 1024x1024
+  label:
+    en_US: Image Size
+    zh_Hans: 图像尺寸
+  name: size
+  required: false
+  type: string

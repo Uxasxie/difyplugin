@@ -1,0 +1,84 @@
+# 认证配置
+credentials_for_provider:
+  api_key:
+    help:
+      en_US: Get your API key from ModelScope or your internal model service. For ModelScope, get it from https://modelscope.cn/my/myaccesstoken.
+      zh_CN: 从 ModelScope 平台或内部模型服务获取您的 API Key。ModelScope 用户请访问 https://modelscope.cn/my/myaccesstoken。
+    label:
+      en_US: API Key
+      zh_CN: API Key
+    placeholder:
+      en_US: Please input your API Key
+      zh_CN: 请输入您的 API Key
+    required: true
+    type: secret-input
+    url: https://modelscope.cn/my/myaccesstoken
+  base_url:
+    help:
+      en_US: The base URL of the model inference API gateway. Defaults to https://api-inference.modelscope.cn/ if left empty. Set this to your own gateway URL if you have deployed models internally. You can include /v1 or not, both are accepted (e.g. http://your-gateway:8000/ or http://your-gateway:8000/v1).
+      zh_CN: 模型推理 API 网关的基础地址。留空则默认使用 https://api-inference.modelscope.cn/。如果您在公司内部部署了模型，请填写您的网关地址。地址中是否包含 /v1 均可（如 http://your-gateway:8000/ 或 http://your-gateway:8000/v1）。
+    label:
+      en_US: API Gateway URL
+      zh_CN: API 网关地址
+    placeholder:
+      en_US: http://your-gateway:8000/ or http://your-gateway:8000/v1
+      zh_CN: http://your-gateway:8000/ 或 http://your-gateway:8000/v1
+    required: false
+    type: text-input
+  model:
+    help:
+      en_US: Default model name for image generation. If set, this overrides the tool-level model default. For internal deployments, enter your model name (e.g. qwen-image). Leave empty to use tool defaults.
+      zh_CN: 图像生成的默认模型名称。设置后将覆盖工具级别的模型默认值。内网部署时请填写您的模型名称（如 qwen-image）。留空则使用工具默认值。
+    label:
+      en_US: Default Model Name
+      zh_CN: 默认模型名称
+    placeholder:
+      en_US: qwen-image
+      zh_CN: qwen-image
+    required: false
+    type: text-input
+  api_mode:
+    help:
+      en_US: API call mode. 'async' uses ModelScope-style submit+polling mode (default). 'sync' uses OpenAI-compatible synchronous mode where the result is returned directly. Most internal deployments (vLLM, TGI) use 'sync' mode.
+      zh_CN: API 调用模式。'async' 使用 ModelScope 风格的提交+轮询异步模式（默认）。'sync' 使用 OpenAI 兼容的同步模式，直接返回结果。大多数内部部署（vLLM、TGI）使用 'sync' 模式。
+    label:
+      en_US: API Mode
+      zh_CN: API 模式
+    placeholder:
+      en_US: async
+      zh_CN: async
+    required: false
+    type: select
+    options:
+    - label:
+        en_US: Async (ModelScope style)
+        zh_CN: 异步（ModelScope 风格）
+      value: async
+    - label:
+        en_US: Sync (OpenAI compatible)
+        zh_CN: 同步（OpenAI 兼容）
+      value: sync
+    default: async
+
+# 扩展配置
+extra:
+  python:
+    source: provider/modelscope_provider.py
+
+# 身份信息
+identity:
+  author: wwwzhouhui
+  description:
+    en_US: ModelScope AI image generation service integration for Qwen-Image series models
+    zh_CN: ModelScope AI 图像生成服务集成，支持 Qwen-Image 系列模型
+  icon: icon.svg
+  label:
+    en_US: ModelScope
+    zh_CN: ModelScope
+  name: modelscope
+  tags: [image]
+
+# 工具列表
+tools:
+- tools/text2image.yaml
+- tools/image2image.yaml

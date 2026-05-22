@@ -1,0 +1,14 @@
+--no-index
+--find-links=./wheels/
+
+# Dify 插件核心依赖
+dify_plugin>=0.3.0,<0.5.0
+
+# HTTP 请求库
+requests>=2.31.0
+
+# 图像处理库
+Pillow>=10.0.0
+
+# JSON 处理（Python 内置，无需额外安装）
+# time 模块（Python 内置，无需额外安装）
