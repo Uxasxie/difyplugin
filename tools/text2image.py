@@ -66,13 +66,13 @@ class Text2ImageTool(Tool):
             
             if api_mode == "sync":
                 # ===== 同步模式：直接获取结果 =====
-                yield self._handle_sync_mode(base_url, common_headers, request_data)
+                yield from self._handle_sync_mode(base_url, common_headers, request_data)
             else:
                 # ===== 异步模式：提交+轮询 =====
-                yield self._handle_async_mode(base_url, common_headers, request_data)
+                yield from self._handle_async_mode(base_url, common_headers, request_data)
         
         except requests.exceptions.HTTPError as e:
-            yield self._handle_http_error(e)
+            yield from self._handle_http_error(e)
         except requests.exceptions.RequestException as e:
             yield self.create_text_message(f"❌ 网络请求错误: {str(e)}")
         except json.JSONDecodeError as e:

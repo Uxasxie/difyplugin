@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Dify plugin runtime
+.uv-cache/
+
+# 注意：wheels/ 不排除，离线打包需要包含
+# wheels/ 目录包含所有 pip 依赖的 .whl 文件
+
+# Test artifacts
+test_output.jpg
+test_*.py
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dify CLI binary
+dify.exe
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Claude settings
+.claude/
